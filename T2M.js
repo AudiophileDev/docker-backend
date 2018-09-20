@@ -39,12 +39,12 @@ class T2M {
 
   _createFile(req, callback) {
     let fileName = req.title.replace(/ /g, "") + ".txt";
-    let path = "textfiles/" + fileName;
+    let path = "public/textfiles/" + fileName;
     fs.writeFile(path, req.text, error => {
       if (error) {
         return callback("Cannot create File. FS Error: " + error, null);
       }
-      return callback(null, "textfiles/" + fileName);
+      return callback(null, "public/textfiles/" + fileName);
     });
   }
 
@@ -52,7 +52,7 @@ class T2M {
     //articleFile outputFile -db databaseFile -[output] [mp3 wav midi play ] -[precise] -db databaseFile
 
     let textpath = path.replace(/ /g, "") + " ";
-    let exportPath = "soundfiles/";
+    let exportPath = "public/soundfiles/";
     let filnename = req.title.replace(/ /g, "") + ".wav";
     let database = " wordsDB.csv";
     let output = " -o wav";

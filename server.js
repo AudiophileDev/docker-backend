@@ -3,23 +3,21 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var cors = require("cors");
 var T2M = require("./T2M");
+var path = require("path");
 T2M = new T2M();
 
 //Init
 var app = express();
 
+app.use(express.static(path.join(__dirname, "/public")));
+
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // to support JSON-encoded bodies
-app.use(
-  bodyParser.urlencoded({
-    // to support URL-encoded bodies
-    extended: true
-  })
-);
 
 //Routing
 app.get("/", function(req, res) {
-  res.send("Hello World");
+  res.send(__dirname + " Hello World");
 });
 
 //      title: body.Title,
