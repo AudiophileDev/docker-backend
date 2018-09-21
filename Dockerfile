@@ -35,7 +35,7 @@ RUN npm install --silent
 
 COPY . /usr/src/app
 
-
+EXPOSE 1247
 
 # start app
 CMD ["npm", "start"]
